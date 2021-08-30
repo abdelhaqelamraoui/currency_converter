@@ -98,14 +98,14 @@ def convert(amount, from_currency, to_currency):
 
 def get_status():
 	"""
-	Returns "online" if the website providind data is reachable
-	(internet connection is available), else it returns "offline
+	Returns True if the website providind data is reachable
+	(internet connection is available), else it returns False
 	"""
 	try:
 		requests.get("https://open.er-api.com/v6/latest/USD")
-		return "online"
+		return True
 	except Exception:
-		return "offline"
+		return False
 
 
 def is_data_outdataed(json_data):
