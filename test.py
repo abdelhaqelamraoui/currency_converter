@@ -1,39 +1,15 @@
-import json
-import ast
-  
-# # Opening JSON file
-# f = open('USD.json',)
-  
-# # returns JSON object as 
-# # a dictionary
-# data = json.load(json.dumps(f))
+import tkinter as tk
+from converter import *
+from tkinter import ttk
 
 
-# # mixing single and double quotes
-# data = {'jsonKey': 'jsonValue',"title": "hello world"}
+window = tk.Tk() # main window object
+window.title("test")
 
-# # get string with all double quotes
-# json_string = json.dumps(data) 
+choices = ["one", "twso"]
+n = tk.StringVar()
+cb = ttk.Combobox(window, values=choices)
+cb.grid(row=0, column=0)
+print(cb.get())
 
-# print(json_string)
-#   
-
-with open('USD.json', "r") as jsf:
-	f = jsf.read()
-	f = f.replace('\'', "\"")
-	data =json.dumps(jsf)
-	print(dic)
-	# rates_data = data["rates"]
-
-
-
-# import json
-
-# # mixing single and double quotes
-# data = {'jsonKey': 'jsonValue',"title": "hello world"}
-
-# # get string with all double quotes
-# json_string = json.dumps(data) 
-# print(json_string)
-
-
+window.mainloop()
