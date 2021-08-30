@@ -5,7 +5,7 @@ import os
 from os import path
 from sys import stderr
 
-def dollor_converter(amount, from_currency, to_currency):
+def convert(amount, from_currency, to_currency):
 	from_currency = from_currency.upper()
 	to_currency = to_currency.upper()
 
@@ -31,21 +31,21 @@ def dollor_converter(amount, from_currency, to_currency):
 		with open(file_name, "r") as jsf:
 			data = json.load(jsf)
 			rates_data = data["rates"]	
-	else:
-		for i in all_currencies:
-			link = "https://open.er-api.com/v6/latest/" + i
-			file_name = dir + i +".json"
-			with open(file_name, "w") as jsf:
-				json_data = requests.get(link).json()
-				f = str(json_data).replace("\'", "\"")
-				jsf.write(f)
+	# else:
+		# for i in all_currencies:
+		# 	link = "https://open.er-api.com/v6/latest/" + i
+		# 	file_name = dir + i +".json"
+		# 	with open(file_name, "w") as jsf:
+		# 		json_data = requests.get(link).json()
+		# 		f = str(json_data).replace("\'", "\"")
+		# 		jsf.write(f)
 
 	return round(amount * rates_data[to_currency], 4)
 	
-amount = int(input("Amount : "))
-from_currency = input("From   : ")
-to_currency = input("To     : ")
+# amount = int(input("Amount : "))
+# from_currency = input("From   : ")
+# to_currency = input("To     : ")
 
-res = dollor_converter(amount, from_currency, to_currency)
-print("{} {} = {} {}".format(amount, from_currency, res, to_currency))
+# res = convert(amount, from_currency, to_currency)
+# print("{} {} = {} {}".format(amount, from_currency, res, to_currency))
 
